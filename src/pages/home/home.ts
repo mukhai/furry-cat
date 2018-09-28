@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
-import { GoogleMaps, GoogleMap, Environment } from '@ionic-native/google-maps';
+import { GoogleMaps, GoogleMap, Environment, Marker } from '@ionic-native/google-maps';
 
 @Component({
   selector: 'page-home',
@@ -29,6 +29,18 @@ export class HomePage {
     //Environment.setBackgroundColor();
 
     this.map = GoogleMaps.create('map_canvas');
+
+    this.map.addMarker({
+      title: '@ionic-native/google-maps',
+      icon: 'blue',
+      animation: 'DROP',
+      position: {
+        lat:43.0741904,
+        lng:-89.3809802
+      }
+    }).then((marker:Marker) => {
+      marker.showInfoWindow();
+    });
   }
 
 }
